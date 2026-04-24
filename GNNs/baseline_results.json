@@ -1,0 +1,12 @@
+{
+  "precompute_time": 0.0,
+  "total_training_time": 1.7302629947662354,
+  "num_epochs": 20,
+  "avg_epoch_time": 0.08576343059539795,
+  "best_accuracy": 0.8813559322033898,
+  "best_f1": 0.8697716374685468,
+  "final_accuracy": 0.8305084745762712,
+  "final_f1": 0.7906823346504303,
+  "test_accuracy": 0.8108108108108109,
+  "test_f1": 0.7687008275243569
+}
