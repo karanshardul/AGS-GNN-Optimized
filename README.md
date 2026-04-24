@@ -381,6 +381,3 @@ Core inherited concepts include:
 * Anmol Agrawal
 
 ---
-
-This version is plain markdown only—no hidden formatting issues, so GitHub should render it properly after direct paste.
-```
