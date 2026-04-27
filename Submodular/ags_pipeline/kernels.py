@@ -67,19 +67,12 @@ def facility_location_kernel_matrix(
     raise ValueError(f"Unknown metric for facility kernel: {metric}")
 
 
-def rank_neighbor_order(
-    scores: torch.Tensor,
-    sign: float,
-) -> torch.Tensor:
-    """
-    Permutation indices that sort neighbors in the same sense as the original
-    `np.argsort(sign * scores)`.
+def rank_neighbor_order(scores, sign, k):
+    k = min(k, scores.shape[-1])
 
-    `sign=-1` for cosine (descending similarity), `sign=1` for Euclidean (ascending distance).
-    """
-    s = sign * scores
-    # stable sort when available (PyTorch 2.x); 1.9 falls back to default order
-    try:
-        return torch.argsort(s, dim=-1, stable=True)
-    except TypeError:
-        return torch.argsort(s, dim=-1)
+    if sign == -1:
+        _, indices = torch.topk(scores, k=k, dim=-1, largest=True)
+    else:
+        _, indices = torch.topk(scores, k=k, dim=-1, largest=False)
+
+    return indices
